@@ -5,7 +5,6 @@ int leftEyeY = height*1/4;
 int eyeDiameter = width*1/8;
 int rightEyeX = width*3/4;
 int rightEyeY = leftEyeY;
-int eyeDiameter = width*1/8;
 int nose1X = width*1/2;
 float nose1Y = height*1/3;
 float nose2X = width*2.5/4;
@@ -21,8 +20,8 @@ int mouthRightY = mouthLeftY;
 ellipse(250, 250, 500,500);
 
 // Eyes - Small circles, ovals
-ellipse(leftEyeX, leftEyeY, eyeDiameter eyeDiameter);
-ellipse(leftEyeX, leftEyeY, eyeDiameter eyeDiameter);
+ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
+ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
 
 // Nose - line
 triangle(nose1X,nose1Y,nose2X,nose2Y,nose3X,nose3Y);
