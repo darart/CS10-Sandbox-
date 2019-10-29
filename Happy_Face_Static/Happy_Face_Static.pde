@@ -1,5 +1,5 @@
 // Happy Face Static
-size(500, 500);
+size(700, 700);
 int leftEyeX = width*1/4;
 int leftEyeY = height*1/4;
 int eyeDiameter = width*1/8;
@@ -11,13 +11,13 @@ float nose2X = width*2.5/4;
 float nose2Y = height*2.5/4;
 float nose3X = width*1.5/4;
 float nose3Y = height*2.5/4;
-int mouthLeftX = width*1/4;
-int mouthLeftY = height*3/4;
-int mouthRightX = width*3/4;
+int mouthLeftX = width*2/5;
+int mouthLeftY = height*4/5;
+int mouthRightX = width*4/5;
 int mouthRightY = mouthLeftY;
 
 // Face - Circle
-ellipse(250, 250, 500,500);
+ellipse(350, 350, 700,700);
 
 // Eyes - Small circles, ovals
 ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
