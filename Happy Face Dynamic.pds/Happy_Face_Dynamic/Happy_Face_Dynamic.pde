@@ -49,12 +49,37 @@ void draw() {
   color pink = #D81CB6;
   fill(pink);
   noStroke() ; // outline of measles
-ellipse (random (width), random (height), measleDiameter, measleDiameter);
+ellipse (random (width*3/8,width*5/8), random (height*1/45,height*43.8/45), measleDiameter, measleDiameter);
 fill(255); // default, gray scale
 stroke(1); // default
 ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
 ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
 triangle(nose1X, nose1Y, nose2X, nose2Y, nose3X, nose3Y);
 line(mouthLeftX, mouthLeftY, mouthRightX, mouthRightY);
+
+  color blue = #0C16F7;
+  fill(blue);
+  noStroke() ; // outline of measles
+  ellipse (random (width*5/8,width*6/8), random (height*2.5/35,height*32.5/35), measleDiameter, measleDiameter);
+ ellipse (random (width*1/8,width*2/8), random (height*6/35,height*28/35), measleDiameter, measleDiameter);
+
+fill(255); // default, gray scale
+stroke(1); // default
+ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
+ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
+triangle(nose1X, nose1Y, nose2X, nose2Y, nose3X, nose3Y);
+line(mouthLeftX, mouthLeftY, mouthRightX, mouthRightY);
+
+color green = #03FA10;
+  fill(green);
+  noStroke() ; // outline of measles
+ellipse (random (width*2/8,width*3/8), random (height*2.5/35,height*32.5/35), measleDiameter, measleDiameter);
+fill(255); // default, gray scale
+stroke(1); // default
+ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
+ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
+triangle(nose1X, nose1Y, nose2X, nose2Y, nose3X, nose3Y);
+line(mouthLeftX, mouthLeftY, mouthRightX, mouthRightY);
+
 
 }
