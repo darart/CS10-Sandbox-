@@ -20,6 +20,15 @@ void setup() {
 size(600, 600);
 //fullscreen();
 
+
+//font Setup
+ //String[] fontList = PFont. list(); // To
+
+
+
+
+quitButtonDraw();
+
  leftEyeX = width*1/4;
  leftEyeY = height*1/4;
  eyeDiameter = width*1/8;
