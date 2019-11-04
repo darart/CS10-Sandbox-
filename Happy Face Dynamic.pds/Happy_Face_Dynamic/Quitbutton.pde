@@ -1,39 +1,37 @@
-// Global Variable
-String title = "Quit!";
-PFont quitButtonFont;
-color purple = #C703FF;
-color purpleQuitButton = #FFDBFB;
-color yellowQuitButton = #FEFFDB;
 
-void quitButtonRect(){
-  rect (width*19/20, height*0, width*1/2, height*1/10); 
-}
+color purple = #FF03F3;
+color yellow = #FFF703;
+color regularButton = purple;
+color hoverOverButton = yellow;
+String title= "Quit";
+PFont titleFont;
 
 void quitButtonSetup() {
-  quitButtonFont = createFont ("Harington", 55);//Must also Tools / create Font / Fi
-  rect (width*19/20, height*0, width*1/2, height*1/10); 
- 
-  
+  titleFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
 }
 
 void quitButtonDraw() {
-  //HoverOver
-  if (mouseX >=width*19/20 && mouseX <=width && mouseY >= height*0 && mouseY <= height *10/20){
-    fill (purpleQuitButton);
-    rect (width*19/20, height*0, width*1/2, height*1/10);  
-  }else {fill (purpleQuitButton);
-     rect (width*19/20, height*0, width*1/2, height*1/10); 
+  println ("Mousex:", mouseX, "\tMouseY:", mouseY);
+  if (mouseX>width*15/16 && mouseX<width && mouseY>0 && mouseY<height*1/16) { //Hover Over
+    fill(hoverOverButton);
+    rect(width*15/16, height*0/16, width*1/16, height*1/16);
+  } else {
+    fill(regularButton);
+    rect(width*15/16, height*0/16, width*1/16, height*1/16);
   }
-  
+
   //Text in Quit Button
-   fill(purple); // Ink, hexidecimal copied from color selector
-textAlign (CENTER, CENTER); // Aling X&Y, se Processing. org/Reference
-//Values: [LEFT | CENTER | RIGHT] & [ TOP | CENTER | BOTTOM | BASELINE]
-textFont (quitButtonFont, 50);
-text(title, width*19/20, height*0, width*10/20, height*1/20);
-fill(255); //Rest to white for rest of the program
-  
+  fill(#2C08FF); //Purple Ink, copied from Color Selector
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: LEFT | CENTER | RIGHT & TOP | CENTER | BOTTOM | BASELINE
+  textFont(titleFont, 15); //Change the number until it fits, largest font size
+  text(title, width*15/16, height*0/16, width*1/16, height*1/16);
+  fill(255); //Reset to white for rest of the program
 }
 
-void quitButtonMouse() {
+void quitButtonMouseClicked() {
+  if (mouseX>width*15/16 && mouseX<width && mouseY>0 && mouseY<height*1/16) {
+    exit();
+  }
+
 }
