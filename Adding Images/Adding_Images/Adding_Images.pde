@@ -18,7 +18,7 @@ void setup() {
   
   rect(width*0, height*1/3,width*0.58139,width*0.58139);
    
-  image(pic1, width*0, height*1/3,width*0.613,width*0.613);
+  image(pic1, width*0, height*1/3,width*0.58139,width*0.58139);
    // for some reason, the 
 }
 
