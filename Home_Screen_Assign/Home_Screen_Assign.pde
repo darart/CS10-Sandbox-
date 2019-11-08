@@ -1,4 +1,4 @@
-// Global Variable
+//// Global Variable
 color circleRed = #ff0303;
 float ptDiameter;
 float pt1X, pt1Y, pt2X, pt2Y, pt3X, pt3Y, pt4X, pt4Y;
