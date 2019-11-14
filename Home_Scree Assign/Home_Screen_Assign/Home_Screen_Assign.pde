@@ -6,7 +6,7 @@ float pt5X, pt5Y;
 float pt9X, pt9Y;
 float pt13X, pt13Y;
 float pt14X, pt14Y;
-
+float pt10X, pt10Y, pt11X, pt11Y, pt12X, pt12Y, pt17X, pt17Y;
 void setup() {
   size(500, 600);
   ptDiameter = width *1/27.777777777;
@@ -24,6 +24,10 @@ void setup() {
   pt13Y = height*2/3;
   pt14X = pt1X;
   pt14Y = width*3/3;
+  pt10X = height*3/5;
+  pt10Y = pt3Y;
+  pt11X = height*4.5/5;
+  pt11Y = pt10X;
 }
 void draw() {
   fill(circleRed);
@@ -35,6 +39,8 @@ void draw() {
   ellipse(pt9X, pt9Y, ptDiameter, ptDiameter);
   ellipse(pt13X, pt13Y, ptDiameter, ptDiameter);
   ellipse(pt14X, pt14Y, ptDiameter, ptDiameter);
+   ellipse(pt10X, pt10Y, ptDiameter, ptDiameter);
+    ellipse(pt11X, pt11Y, ptDiameter, ptDiameter);
 }
 void mousePressed() {
 }
