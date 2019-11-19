@@ -39,7 +39,7 @@ ellipse(pt5X, pt5Y,ptDiameter, ptDiameter);
 ellipse(pt9X, pt9Y,ptDiameter, ptDiameter);
 ellipse(pt13X, pt13Y,ptDiameter, ptDiameter);
 ellipse(pt14X, pt14Y,ptDiameter, ptDiameter);
-;
+
 }
 void mousePressed(){
 
