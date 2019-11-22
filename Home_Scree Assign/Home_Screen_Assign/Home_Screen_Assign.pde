@@ -1,7 +1,9 @@
 
 // Global Variable
-color circleRed = #FF0303, white=255, black=0, green=#64F286, orange=#DB7414, yellow=#FCFC05;
-Boolean turnoYellow=false, turnOnpink=false, turnOnBrown=false;
+color circleRed = #FF0303, white=255, black=0, orange=#DB7414, yellow=#FCFC05;
+color Pink=#F2A9E9, Green=#64F286, Blue=#A9D9F2;
+Boolean turnOnGreen=false, turnOnPink=false, turnOnBlue=false;
+
 float ptDiameter, rectwidth, rectheight;
 float pt1X, pt1Y, pt2X, pt2Y, pt3X, pt3Y, pt4X, pt4Y;
 float  pt5X, pt5Y, pt6X, pt6Y, pt7X, pt7Y, pt8X, pt8Y;
@@ -15,6 +17,7 @@ float  button5X, button5Y, button5width, button5height;
 float button6X, button6Y, button6width, button6height;
 float button7X, button7Y, button7width, button7height;
 float button8X, button8Y, button8width, button8height;
+float button9X, button9Y, button9width, button9height;
 
 void setup() {
   size(500, 500);
@@ -71,8 +74,8 @@ void setup() {
   button7width = width*3/24;
   button7height = height*3/21;
   //
-   button8X = width * 15/16;
-  button8Y = height * 5/30;
+   button8X = width * 3/3;
+  button8Y = height * 3/3;
   button8width = width*4/25;
   button8height = height*2.8/25;
   
@@ -81,13 +84,19 @@ void setup() {
 
 
 void draw() {
-if (turnOnyellow == true){
-  fill(yellow);}
-  if (turnOnOrange == true){
-    fill(Orange);}
-    if (turnOnGreen == true){
-      fill(Green);
+    //fill(white);
+  rect(pt1X, pt1Y, rectwidth, rectheight);
+  //Bug: must press reset, Btn#8, each time to reset color
+if (turnOnPink == true){
+  fill(Pink);
+}
+  if (turnOnGreen == true){
+    fill(Green);
+  }
+    if (turnOnBlue == true){
+      fill(Blue);
     }
+    
   rect(pt1X, pt1Y, rectwidth, rectheight); 
   rect(pt2X, pt2Y, rectwidth, rectheight); 
   rect(pt3X, pt3Y, rectwidth, rectheight); 
@@ -105,7 +114,7 @@ if (turnOnyellow == true){
   rect(pt12X, pt12Y, rectwidth, rectheight);
   rect(pt16X, pt16Y, rectwidth, rectheight);
   //
-  fill(green);
+  fill(Green);
    rect(button1X, button1Y, button1width, button1height);
    rect(button2X, button2Y, button2width, button2height);
    rect(button3X, button3Y, button3width, button3height);
@@ -115,9 +124,43 @@ if (turnOnyellow == true){
    rect(button6X, button6Y, button6width, button6height);
    rect(button7X, button7Y, button7width, button7height);
    rect(button8X, button8Y, button8width, button8height);
+   //
+    fill(Pink);
+    rect(button1X, button1Y, button1width, button1height);
+    rect(button8X, button8Y, button8width, button8height);
+    rect(pt16X, pt16Y, rectwidth, rectheight);
+
+
+//Button Rectangles
+  if ( mouseX>=button1X && mouseX<=button1X+button1width && mouseY>=button1Y && mouseY<=button1Y+button1height) {
+    fill(Blue);
+    rect(button1X, button1Y, button1width, button1height);   
+   } else {
+    fill(Green);
+    rect(button1X, button1Y, button1width, button1height);
+  }
+  if ( mouseX>=button2X && mouseX<=button2X+button2width && mouseY>=button2Y && mouseY<=button2Y+button2height) {
+    fill(yellow);
+    rect(button2X, button2Y, button2width, button2height);
+  } else {
+    fill(Pink);
+    rect(button2X, button2Y, button2width, button2height);
+  }
+  if ( mouseX>=button3X && mouseX<=button3X+button3width && mouseY>=button3Y && mouseY<=button3Y+button3height) {
+    fill(yellow);
+    rect(button3X, button3Y, button3width, button3height);
+  } else {
+    fill(Green);
+    rect(button3X, button3Y, button3width, button3height);
+  }
+  if ( mouseX>=button4X && mouseX<=button4X+button4width && mouseY>=button4Y && mouseY<=button4Y+button4height) {
+    fill(yellow);
+    rect(button4X, button4Y, button4width, button4height);
+  } else {
+    fill(Green);
+    rect(button4X, button4Y, button4width, button4height);
+  }
    
-   
-   if (mouseX>= button1X && mouseX<=button1X+button1width && mouseY>button1Y && mouseY<=button1Y+button1height);
   fill(black);
   //
   ellipse(pt1X, pt1Y, ptDiameter, ptDiameter);
@@ -144,20 +187,24 @@ fill(circleRed);
   ellipse(pt16X, pt16Y, ptDiameter, ptDiameter); 
   fill(white);
 }
-  
-  
  
-void mousePressed() {
+void mousePressed(){
 if ( mouseX>=button1X && mouseX<=button1X+button1width && mouseY>=button1Y && mouseY<=button1Y+button1height) {
     println("Btn 1 activated");
+    turnOnBlue = true;
   }
   if ( mouseX>=button2X && mouseX<=button2X+button2width && mouseY>=button2Y && mouseY<=button2Y+button2height) {
     println("Btn 2 activated");
+    turnOnBlue = true;
   }
   if ( mouseX>=button3X && mouseX<=button3X+button3width && mouseY>=button3Y && mouseY<=button3Y+button3height) {
     println("Btn 3 activated");
+    turnOnGreen = true;
   }
   if ( mouseX>=button4X && mouseX<=button4X+button4width && mouseY>=button4Y && mouseY<=button4Y+button4height) {
     println("Btn 4 activated");
-}
+    turnOnBlue = false;
+    turnOnPink = false;
+    turnOnGreen = false;
+ }
 }
