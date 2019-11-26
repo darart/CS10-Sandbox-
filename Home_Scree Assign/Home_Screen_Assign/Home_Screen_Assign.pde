@@ -195,7 +195,7 @@ if ( mouseX>=button1X && mouseX<=button1X+button1width && mouseY>=button1Y && mo
   }
   if ( mouseX>=button2X && mouseX<=button2X+button2width && mouseY>=button2Y && mouseY<=button2Y+button2height) {
     println("Btn 2 activated");
-    turnOnBlue = true;
+    turnOnPink = true;
   }
   if ( mouseX>=button3X && mouseX<=button3X+button3width && mouseY>=button3Y && mouseY<=button3Y+button3height) {
     println("Btn 3 activated");
