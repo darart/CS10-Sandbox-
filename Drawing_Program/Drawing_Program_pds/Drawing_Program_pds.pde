@@ -1,57 +1,46 @@
 //Global Variable
-color  orange = #B7720B, white = #FFFFFF, blue= #6CBAE3, green= #05430A;
-Boolean turnOngreen = true, turnOnblue=true;
+color ink, black=#000000;
+
 float ptDiameter, rectwidth, rectheight;
-float pt1X, pt1Y, pt2X, pt2Y;
-
-float button1X, button1Y, button1width, button1height;
-float button2X, button2Y, button2width, button2height;
-
+float ptX, ptY;
+Boolean draw=false;
 
 void setup(){ 
-  frameRate(15);
-  size(600, 500);
-  ptDiameter = width *0.4/30;
-  rectwidth = width*3/3;
-  rectheight = height*3/3;
-  //
-  pt1X = width*0;
-  pt1Y  = height*0/3;
-  //
-  pt2X = width*0;
-  //
-  pt2Y = height*1.7/3;
 
+  size(600, 500);
+
+  ptDiameter = width *0.4/30;
+  rectwidth = width*2.4/3;
+  rectheight = height*2.5/3;
+  //
+  ptX = width*0;
+  ptY  = height*0/3;
 //
-//button to illstrate arithmetic
- button1width = width*1/30;
- button1height = height*1/27;
- button1X = width *1/40;
- button1Y = height*130;
 
   
   
   
 }
 void draw(){
-  line(0, 0, width, height);
-  println(frameCount);
-  fill(blue);
-  rect(pt1X, pt1Y, rectwidth, rectheight); 
-  fill(green);
-  rect(pt2X, pt2Y, rectwidth, rectheight);
-
-  //
- 
-  rect(button1X, button1Y, button1width, button1height);
-   rect(button2X, button2Y, button2width, button2height);
-
- fill(orange);
-  ellipse(pt1X, pt1Y, ptDiameter, ptDiameter);
-  ellipse(pt2X, pt2Y, ptDiameter, ptDiameter);
   
-  ellipse(50, 50, 200, 200);
+
+  rect(ptX, ptY, rectwidth, rectheight); 
+
+  ellipse(ptX, ptY, ptDiameter, ptDiameter);
+   if (draw == true) {
+    fill(ink);
+    
+  }
 }
 
 void mousePressed(){
+
+    println("drawing surface");
+    if (draw == false) {
+      draw = true;
+    } else {
+      draw = false;
+    }
+    ink = black; // example to change ink
+
 }
