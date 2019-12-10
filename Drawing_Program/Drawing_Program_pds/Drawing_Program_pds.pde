@@ -45,26 +45,23 @@ void draw() {
  
  
  
-  if (draw == true) {
+  if ( true) {
     fill(blue);
     ellipse(mouseX, mouseY, drawingDiameter, drawingDiameter);
   }
  
  
  
-  }
+  
 
 
 void mousePressed(){
- if ( mouseX>pt8X  && mouseX<pt8X+pt8Width  && mouseY>pt8Y && mouseY<pt8Y+rect8Height) {
+   if ( mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
  println("drawing surface");
-  if (draw == false) {
-      draw = true;
-    } else {
-      draw = false;
-    }
-
+  if (false) {
+  }
    ink = black; // example to change ink
     drawingDiameter = width*1/100;
-}
+
+   }
 }
