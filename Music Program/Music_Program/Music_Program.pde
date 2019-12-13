@@ -57,8 +57,45 @@ println("Publisher:",songMetaData1.publisher());
 println("Encoded:",songMetaData1.encoded()); //how a computer reads the file
 song2 = minim.loadFile("");
 song3 = minim. loadFile("");
+  size(512, 200, P3D);
+  
+  // we pass this to Minim so that it can load files from the data directory
+  minim = new Minim(this);
+  
+  // loadFile will look in all the same places as loadImage does.
+  // this means you can find files that are in the data folder and the 
+  // sketch folder. you can also pass an absolute path, or a URL.
+  song1 = minim.loadFile("Greedy.mp3");
 }
-void draw(){}
+void draw(){
+  background(0);
+  stroke(255);
+  
+  // draw the waveforms
+  // the values returned by left.get() and right.get() will be between -1 and 1,
+  // so we need to scale them up to see the waveform
+  // note that if the file is MONO, left.get() and right.get() will return the same value
+  for(int i = 0; i < song1.bufferSize() - 1; i++)
+  {
+    float x1 = map( i, 0, song1.bufferSize(), 0, width );
+    float x2 = map( i+1, 0, song1.bufferSize(), 0, width );
+    line( x1, 50 + song1.left.get(i)*50, x2, 50 + song1.left.get(i+1)*50 );
+    line( x1, 150 + song1.right.get(i)*50, x2, 150 + song1.right.get(i+1)*50 );
+  }
+  
+  // draw a line to show where in the song playback is currently located
+  float posx = map(song1.position(), 0, song1.length(), 0, width);
+  stroke(0,200,0);
+  line(posx, 0, posx, height);
+  
+  if ( song1.isPlaying() )
+  {
+    text("Press any key to pause playback.", 10, 20 );
+  }
+  else
+  {
+    text("Press any key to start playback.", 10, 20 );
+  }}
 
 void keyPressed(){
  if ( key == 'p' || key == 'P' ) { //Caps lock can be on
@@ -84,5 +121,4 @@ void keyPressed(){
   if(key == 'l' || key == 'l') song1.loop(loopnum); // single line If
   // "l" Automatically loop the song, and starts playing
 }
-void mousePressed(){
-}
+void mousePressed(){}
