@@ -7,21 +7,20 @@ import ddf.minim.ugens.*;
 
 //Global Variables 
 Minim  minim;
-int numberOfsong =3;
+int numberOfsong =4;
 AudioPlayer[] song = new AudioPlayer[numberOfsong];
 int currentSong = numberOfsong - numberOfsong;
 
 void setup(){
 minim = new Minim(this);
-song[0] =minim.loadFile("");
-song[1] =minim.loadFile("");
-song[2] =minim.loadFile("");
+song[0] =minim.loadFile("If_I_Had_a_Chicken.mp3");
+song[1] =minim.loadFile("Seasons (1).mp3");
+song[2] =minim.loadFile("Greedy.mp3");
 song[3] =minim.loadFile("");
 //
 println("start of console");
 println("Click th canvas to finish starting this program");
-println("press p to play and pause, will rewind when at the end");
-println("press s to stop and rewind to the beginning");
+println("press p to play and pause");
 }
 void draw(){
 
@@ -32,21 +31,28 @@ void mousePressed(){
 
 void keyPressed(){
 if (key == 'n' || key == 'N') { // Next-Back code
- if(song[currentSong]. is Playing(){
+ if (song[currentSong]. isPlaying() ){
    song[currentSong].pause();
    song[currentSong].rewind();
-   if (currentsong == numberOFsong - 1){
-     currentSong = currentSong - numberOfsong;
-     song[currenntSong].play();
+   if (currentSong == numberOfsong - 1){
+     currentSong = currentSong - (numberOfsong -1);
    }else{
-   currentSong = curretSong + 1;
-   song[currentSong].play();
-   }
- }else{
    currentSong = currentSong + 1;
+   }
+ 
    println(currentSong);
-//
- if (key == 'b' || key == 'B') {} // Next-Back code
+    song[currentSong].play();
+ }else{
+   if (currentSong == numberOfsong - 1){
+ currentSong = currentSong - (numberOfsong);
+   }
+ currentSong = currentSong +1;
+}
+}
+
+
+ //if (key == 'b' || key == 'B') {} // Next-Back code
+ 
  if ( key == 'p' || key == 'P' ) {
  if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
