@@ -1,15 +1,8 @@
-
 //Music Program
 /*
-
-
-
 /* sound Effets
 Wood_Door_Open and 
-
-
 */
-
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -21,15 +14,25 @@ import ddf.minim.ugens.*;
 //Global Variables
 Minim minim;
 AudioPlayer song1;
-AudioMetaData songMetaData1;
-AudioPlayer song2;
-AudioPlayer song3;
-int loopnum = 1;
+int numberOfSoundEffects = 1;
+int numberOfsongs =4;
+AudioPlayer[] song = new AudioPlayer[numberOfsongs];
+AudioPlayer [] SoundEffect = new AudioPlayer [numberOfSoundEffects];
+int currentSong = numberOfsongs - numberOfsongs; // Zero starting index
+int currentSoundEffects = numberOfSoundEffects - numberOfSoundEffects; // Zero strating index
+AudioMetaData songMetaData1; // need to be an array
+int loopnum = 1;// able to connect this variable to buttons, increasing the loop number
 void setup(){
 minim = new Minim(this);
 //lod from data directory, loadFile should also load from project floder
-song1 = minim.loadFile("Greedy.mp3");
-songMetaData1 = song1.getMetaData();
+song[0] =minim.loadFile("If_I_Had_a_Chicken.mp3");
+song[1] =minim.loadFile("Seasons (1).mp3");
+song[2] =minim.loadFile("Greedy.mp3");
+song[3] =minim.loadFile("");
+songMetaData1 = song[0].getMetaData();
+//
+SoundEffect[0] = minim.loadFile("Finding_Me.mp3");
+
 // instructions
 println("start of console");
 println("Click th canvas to finish starting this program");
@@ -55,8 +58,6 @@ println("Genre:",songMetaData1.genre());
 println("Copyright:",songMetaData1.copyright());
 println("Publisher:",songMetaData1.publisher());
 println("Encoded:",songMetaData1.encoded()); //how a computer reads the file
-song2 = minim.loadFile("");
-song3 = minim. loadFile("");
   size(512, 200, P3D);
   
   // we pass this to Minim so that it can load files from the data directory
@@ -68,57 +69,79 @@ song3 = minim. loadFile("");
   song1 = minim.loadFile("Greedy.mp3");
 }
 void draw(){
-  background(0);
-  stroke(255);
-  
-  // draw the waveforms
-  // the values returned by left.get() and right.get() will be between -1 and 1,
-  // so we need to scale them up to see the waveform
-  // note that if the file is MONO, left.get() and right.get() will return the same value
-  for(int i = 0; i < song1.bufferSize() - 1; i++)
-  {
-    float x1 = map( i, 0, song1.bufferSize(), 0, width );
-    float x2 = map( i+1, 0, song1.bufferSize(), 0, width );
-    line( x1, 50 + song1.left.get(i)*50, x2, 50 + song1.left.get(i+1)*50 );
-    line( x1, 150 + song1.right.get(i)*50, x2, 150 + song1.right.get(i+1)*50 );
-  }
-  
-  // draw a line to show where in the song playback is currently located
-  float posx = map(song1.position(), 0, song1.length(), 0, width);
-  stroke(0,200,0);
-  line(posx, 0, posx, height);
-  
-  if ( song1.isPlaying() )
-  {
-    text("Press any key to pause playback.", 10, 20 );
-  }
-  else
-  {
-    text("Press any key to start playback.", 10, 20 );
-  }}
+ }
 
 void keyPressed(){
  if ( key == 'p' || key == 'P' ) { //Caps lock can be on
-    if ( song1.isPlaying() ) {
-      song1.pause();
- } else if ( song1.position() == song1.length() ) {
-      song1.rewind();
-      song1.play();
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+ } else if ( song[currentSong].position() == song[currentSong].length() ) {
+      song[currentSong].rewind();
+      song[currentSong].play();
  } else {
-      song1.play();
+      song[currentSong].play();
   }
   }
   //
   if (key == 's' || key == 'S') {
-    if ( song1.isPlaying() ) {
-      song1.pause();
-      song1.rewind();
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
     } else { //Song is not Playing
-      song1.rewind();
+      song[currentSong].rewind();
     }
   }
   //
-  if(key == 'l' || key == 'l') song1.loop(loopnum); // single line If
+  if(key == 'l' || key == 'l') song[currentSong].loop(loopnum); // single line If
   // "l" Automatically loop the song, and starts playing
+ if ( key == 'f' || key == 'F') song[currentSong].skip(1000); // skip forward 1 second (1000 milliseconds), single IF Line
+  if ( key == 'r' || key == 'R') song[currentSong].skip(-1000); // skip backward 1 second (1000 milliseconds), single IF Line
+  //
+  // Debugging for 
+  println( "\nSong Position: ", "\t\t\t\t", song[currentSong].position(), "milliseconds" );
+  println( "Song Position:", (song[currentSong].position()/1000)/60, "minutes\t", (song[currentSong].position()/1000)-((song[currentSong].position()/1000)/60 * 60), "seconds" );
+  //
+  if (key == 'n' || key == 'N') { //Next-Back Code
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfsongs - 1) {
+        currentSong = currentSong - (numberOfsongs-1);
+      } else {
+        currentSong = currentSong + 1;
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      if ( currentSong == numberOfsongs - 1) {
+        currentSong = currentSong - (numberOfsongs);
+      }
+      currentSong = currentSong + 1;
+      println(currentSong);
+    }
+  } 
+  //
+  if (key == 'b' || key == 'B') { //Next-Back Code
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfsongs - numberOfsongs ) {
+        currentSong = numberOfsongs - 1;
+      } else {
+        currentSong -= 1; // Equivalent code: currentSong = currentSong - 1
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      song[currentSong].rewind();
+      if ( currentSong == numberOfsongs - numberOfsongs ) {
+        currentSong = numberOfsongs - 1;
+      } else {
+        currentSong -= 1;
+      }
+      println(currentSong);
+    }
+  } 
+  //
 }
 void mousePressed(){}

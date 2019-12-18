@@ -8,8 +8,13 @@ import ddf.minim.ugens.*;
 //Global Variables 
 Minim  minim;
 int numberOfsong =4;
+int numberOfSoundEffects = 1;
 AudioPlayer[] song = new AudioPlayer[numberOfsong];
+AudioPlayer [] SoundEffect = new AudioPlayer [numberOfSoundEffects];
 int currentSong = numberOfsong - numberOfsong;
+int currentSoundEffects = numberOfSoundEffects - numberOfSoundEffects; // Zero strating
+int loopNum = 1; //Able to connect this variabal
+
 
 void setup(){
 minim = new Minim(this);
