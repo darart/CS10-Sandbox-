@@ -13,7 +13,6 @@ import ddf.minim.ugens.*;
 
 //Global Variables
 Minim minim;
-AudioPlayer song[currentSong];
 int numberOfSoundEffects = 1;
 int numberOfsongs =4;
 AudioPlayer[] song = new AudioPlayer[numberOfsongs];
@@ -22,7 +21,11 @@ int currentSong = numberOfsongs - numberOfsongs; // Zero starting index
 int currentSoundEffects = numberOfSoundEffects - numberOfSoundEffects; // Zero strating index
 AudioMetaData songMetaData1; // need to be an array
 int loopnum = 1;// able to connect this variable to buttons, increasing the loop number
-void setup(){
+float drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight;
+float drawingDiameter;
+int measleDiameter;
+void setup(){ 
+
 minim = new Minim(this);
 //lod from data directory, loadFile should also load from project floder
 song[0] =minim.loadFile("If_I_Had_a_Chicken.mp3");
@@ -45,7 +48,8 @@ println(" press l to loop the song");
 println("file name: ",songMetaData1.fileName());
 println("length(in milliseconds):",songMetaData1.length());
 println("length(in seconds):",songMetaData1.length()/1000);
-println("length(in minutes & seconds):",(songMetaData1.length()/1000)/6o, "minute", (songMetaData1.length()/100-( (songMetaData1.length()/1000)/60*60),"seconds");
+println( "Length (in minutes & seconds): ", (songMetaData1.length()/1000)/60, " minute", (songMetaData1.length()/1000)-((songMetaData1.length()/1000)/60 * 60), " seconds" );
+//sometime available
 println("Title:",songMetaData1.title());
 println("Author:",songMetaData1.author());//song Writer or performer
 println("CompoSer:",songMetaData1.composer());//song Writer
@@ -60,8 +64,12 @@ println("Genre:",songMetaData1.genre());
 println("Copyright:",songMetaData1.copyright());
 println("Publisher:",songMetaData1.publisher());
 println("Encoded:",songMetaData1.encoded()); //how a computer reads the file
-  size(512, 200, P3D);
-  
+   //
+   size(512, 500, P3D);
+ drawingSurfaceX = width*0/3;
+  drawingSurfaceY = height*0/3;
+  drawingSurfaceWidth = width*5/5;
+  drawingSurfaceHeight = height*5/5;
   // we pass this to Minim so that it can load files from the data directory
   minim = new Minim(this);
   
@@ -71,6 +79,8 @@ println("Encoded:",songMetaData1.encoded()); //how a computer reads the file
   song[currentSong] = minim.loadFile("Greedy.mp3");
 }
 void draw(){
+  rect(drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight);
+  ellipse(width*3/4, height*1/2, width, height);//-circle
  }
 
 void keyPressed(){
@@ -146,4 +156,9 @@ void keyPressed(){
   } 
   //
 }
-void mousePressed(){}
+void mousePressed(){
+if ( mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
+    println("drawing surface");
+    
+}
+}
