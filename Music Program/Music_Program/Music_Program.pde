@@ -1,7 +1,7 @@
 //Music Program
 /*
 /* sound Effets
-Wood_Door_Open and 
+ 
 */
 
 import ddf.minim.*;
@@ -13,7 +13,7 @@ import ddf.minim.ugens.*;
 
 //Global Variables
 Minim minim;
-AudioPlayer song1;
+AudioPlayer song[currentSong];
 int numberOfSoundEffects = 1;
 int numberOfsongs =4;
 AudioPlayer[] song = new AudioPlayer[numberOfsongs];
@@ -41,9 +41,11 @@ println("press s to stop and rewind to the beginning");
 println(" press l to loop the song");
 
 //verifying MetaData
+//Always availabe
 println("file name: ",songMetaData1.fileName());
 println("length(in milliseconds):",songMetaData1.length());
 println("length(in seconds):",songMetaData1.length()/1000);
+println("length(in minutes & seconds):",(songMetaData1.length()/1000)/6o, "minute", (songMetaData1.length()/100-( (songMetaData1.length()/1000)/60*60),"seconds");
 println("Title:",songMetaData1.title());
 println("Author:",songMetaData1.author());//song Writer or performer
 println("CompoSer:",songMetaData1.composer());//song Writer
@@ -66,7 +68,7 @@ println("Encoded:",songMetaData1.encoded()); //how a computer reads the file
   // loadFile will look in all the same places as loadImage does.
   // this means you can find files that are in the data folder and the 
   // sketch folder. you can also pass an absolute path, or a URL.
-  song1 = minim.loadFile("Greedy.mp3");
+  song[currentSong] = minim.loadFile("Greedy.mp3");
 }
 void draw(){
  }

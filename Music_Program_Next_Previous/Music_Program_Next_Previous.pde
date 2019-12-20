@@ -52,13 +52,12 @@ if (key == 'n' || key == 'N') { // Next-Back code
  currentSong = currentSong - (numberOfsong);
    }
  currentSong = currentSong +1;
+ println(currentSong);
 }
 }
 
-
- //if (key == 'b' || key == 'B') {} // Next-Back code
- 
- if ( key == 'p' || key == 'P' ) {
+ //
+ if (key == 'b' || key == 'B') {} // Next-Back code
  if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
  } else if ( song[currentSong].position() == song[currentSong].length() ) {
@@ -68,4 +67,3 @@ if (key == 'n' || key == 'N') { // Next-Back code
       song[currentSong].play();
   }
   }
-}
