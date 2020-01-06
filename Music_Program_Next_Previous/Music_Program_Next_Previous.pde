@@ -7,13 +7,9 @@ import ddf.minim.ugens.*;
 
 //Global Variables 
 Minim  minim;
-int numberOfsong =4;
-int numberOfSoundEffects = 1;
-AudioPlayer[] song = new AudioPlayer[numberOfsong];
-AudioPlayer [] SoundEffect = new AudioPlayer [numberOfSoundEffects];
-int currentSong = numberOfsong - numberOfsong;
-int currentSoundEffects = numberOfSoundEffects - numberOfSoundEffects; // Zero strating
-int loopNum = 1; //Able to connect this variabal
+int numberOfSongs = 4;
+AudioPlayer[] song = new AudioPlayer[numberOfSongs];
+int currentSong = numberOfSongs - numberOfSongs;
 
 
 void setup(){
@@ -21,7 +17,7 @@ minim = new Minim(this);
 song[0] =minim.loadFile("If_I_Had_a_Chicken.mp3");
 song[1] =minim.loadFile("Seasons (1).mp3");
 song[2] =minim.loadFile("Greedy.mp3");
-song[3] =minim.loadFile("");
+song[3] =minim.loadFile("Finding_Me.mp3");
 //
 println("start of console");
 println("Click th canvas to finish starting this program");
@@ -39,8 +35,8 @@ if (key == 'n' || key == 'N') { // Next-Back code
  if (song[currentSong]. isPlaying() ){
    song[currentSong].pause();
    song[currentSong].rewind();
-   if (currentSong == numberOfsong - 1){
-     currentSong = currentSong - (numberOfsong -1);
+   if (currentSong == numberOfSongs - 1){
+     currentSong = currentSong - (numberOfSongs -1);
    }else{
    currentSong = currentSong + 1;
    }
@@ -48,8 +44,8 @@ if (key == 'n' || key == 'N') { // Next-Back code
    println(currentSong);
     song[currentSong].play();
  }else{
-   if (currentSong == numberOfsong - 1){
- currentSong = currentSong - (numberOfsong);
+   if (currentSong == numberOfSongs - 1){
+ currentSong = currentSong - (numberOfSongs);
    }
  currentSong = currentSong +1;
  println(currentSong);
@@ -57,13 +53,36 @@ if (key == 'n' || key == 'N') { // Next-Back code
 }
 
  //
- if (key == 'b' || key == 'B') {} // Next-Back code
+ if (key == 'b' || key == 'B') { // Next-Back code
  if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
- } else if ( song[currentSong].position() == song[currentSong].length() ) {
+   song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1; // Equivalent code: currentSong = currentSong - 1
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1;
+      }
+      println(currentSong);
+    }
+  } 
+  //
+  if (key == 'p' || key == 'P') {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {
       song[currentSong].rewind();
       song[currentSong].play();
- } else {
+    } else {
       song[currentSong].play();
+    }
   }
-  }
+}

@@ -50,18 +50,16 @@ void draw() {
     ellipse(mouseX, mouseY, drawingDiameter, drawingDiameter);
   }
  
- 
- 
-  
-
-
-void mousePressed(){
-   if ( mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
- println("drawing surface");
-  if (false) {
-  }
-   ink = black; // example to change ink
+void mousePressed() {
+    quitButtonMouseClicked();
+  if ( mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
+    println("drawing surface");
+    if (draw == false) {
+      draw = true;
+    } else {
+      draw = false;
+    }
+    ink = black; // example to change ink
     drawingDiameter = width*1/100;
-
-   }
+  }
 }
