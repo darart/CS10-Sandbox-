@@ -2,6 +2,7 @@
 color ink, black=#000000, white=255, blue=#0C05FA;
 float drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight;
 float drawingDiameter;
+Boolean draw=false;
 float ptDiameter, rectWidth, rectHeight;
 float pt1X, pt1Y, pt2X, pt2Y, pt3X, pt3Y, pt4X, pt4Y, pt5X, pt5Y;
 float pt6X, pt6Y, pt7X, pt7Y, pt8X, pt8Y, pt9X, pt9Y, pt10X, pt10Y;
@@ -43,15 +44,12 @@ void draw() {
  rect(pt9X, pt9Y, rectWidth, rectHeight);
  rect(pt10X, pt10Y, rectWidth, rectHeight);
  
- 
- 
   if ( true) {
     fill(blue);
     ellipse(mouseX, mouseY, drawingDiameter, drawingDiameter);
   }
- 
+}
 void mousePressed() {
-    quitButtonMouseClicked();
   if ( mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
     println("drawing surface");
     if (draw == false) {
