@@ -10,10 +10,12 @@ Minim  minim;
 int numberOfSongs = 4;
 AudioPlayer[] song = new AudioPlayer[numberOfSongs];
 int currentSong = numberOfSongs - numberOfSongs;
-
+color black=#2E2525;
 
 void setup(){
-minim = new Minim(this);
+size(400,400);
+background(#2E2525);
+ minim = new Minim(this);
 song[0] =minim.loadFile("If_I_Had_a_Chicken.mp3");
 song[1] =minim.loadFile("Seasons (1).mp3");
 song[2] =minim.loadFile("Greedy.mp3");
@@ -24,6 +26,7 @@ println("Click th canvas to finish starting this program");
 println("press p to play and pause");
 }
 void draw(){
+
 
 }
 void mousePressed(){
