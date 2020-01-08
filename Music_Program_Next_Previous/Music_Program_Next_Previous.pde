@@ -13,6 +13,7 @@ int currentSong = numberOfSongs - numberOfSongs;
 color black=#2E2525;
 
 void setup(){
+
 size(400,400);
 background(#2E2525);
  minim = new Minim(this);
@@ -24,8 +25,19 @@ song[3] =minim.loadFile("Finding_Me.mp3");
 println("start of console");
 println("Click th canvas to finish starting this program");
 println("press p to play and pause");
+  
+ //Using WIDTH and HEIGHT Key Varaibles, communciaiton to the display Geometry
+  //String[] fontList = PFont.list(); //To list all fonts available on system
+  println("Start of Console");
+  //printArray(fontList); //For listing all possible fonts to choose, then createFont
+  titleFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
+ 
+ quitButtonSetup();
+
+
 }
 void draw(){
+  quitButtonSetup();
 
 
 }
@@ -34,7 +46,9 @@ void mousePressed(){
 }
 
 void keyPressed(){
-if (key == 'n' || key == 'N') { // Next-Back code
+  quitButtonMouseClicked();
+
+  if (key == 'n' || key == 'N') { // Next-Back code
  if (song[currentSong]. isPlaying() ){
    song[currentSong].pause();
    song[currentSong].rewind();
