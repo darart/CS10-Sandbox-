@@ -39,34 +39,28 @@ println("press p to play and pause");
   titleFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
  
  quitButtonSetup();
- nose1X = width*1/5;
- nose1Y = height*1.3/2;
- nose2X = width*1.5/5;
- nose2Y =height*6/8;
- nose3X = width*1.8/4;
- nose3Y = height*2/4;
 
 }
 void draw(){
 
   quitButtonDraw();
-
+  
   fill(white);
   noStroke();
   rect(25, 25, 350, 350, 80);
 
   fill(black);
-  triangle(nose1X, nose1Y, nose2X, nose2Y, nose3X, nose3Y);
+  triangle(160, 180, 160, 230, 198, 208);
   rect( 235, 180, 15, 45, 7);
   rect( 210, 180, 15, 45, 7);
 
-  triangle(152, 283, 152, 307, 137, 297);
-  triangle(137, 283, 137, 307, 122, 296);
-  rect( 115, 283, 5, 25, 6);
+  triangle(90, 194, 90, 218, 70, 208);
+  triangle(70, 194, 70, 218, 55, 208);
+  rect( 50, 194, 5, 25, 6);
 
   triangle(345, 283, 345, 307, 363, 296);
   triangle(363, 283, 363, 307, 378, 296);
-  rect( 378, 283, 5, 25, 6);
+  rect( 350, 194, 5, 25, 6);
   
 
  
