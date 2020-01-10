@@ -15,7 +15,7 @@ color pink=#B74EB5;
 color white=#FFFFFF;
 color blue=#140EE8;
 color lightblue=#67C0FA;
-
+ float nose1X, nose1Y, nose2X, nose2Y, nose3X, nose3Y;
 boolean play;
 
 void setup(){
@@ -39,90 +39,37 @@ println("press p to play and pause");
   titleFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
  
  quitButtonSetup();
-
+ nose1X = width*1/5;
+ nose1Y = height*1.3/2;
+ nose2X = width*1.5/5;
+ nose2Y =height*6/8;
+ nose3X = width*1.8/4;
+ nose3Y = height*2/4;
 
 }
 void draw(){
 
   quitButtonDraw();
- fill(black);
-  rect(27, 70, 450, 450, 50);
+
   fill(white);
   noStroke();
-  rect(53, 95, 400, 400, 45);
-  stroke(1);
-  fill(pink);
-  ellipse(250, 300, 350, 350);
-  fill(pink);
-  noStroke();
-  ellipse(250, 300, 323, 323);
-  ellipse(250, 300, 125, 125);
-  stroke(1);
-  fill(lightblue);
-  noStroke();
-  ellipse(250, 300, 225, 225);
-  stroke(1);
-  fill(blue);
-  noStroke();
-  ellipse(250, 300, 125, 125);
-  stroke(1);
-
-  fill(lightblue);
-  //rect(109, 275, 50, 40);
-  //rect(340, 276, 50, 40);
-  //rect(210, 265, 85, 65);
-  //rect(232, 422, 30, 30);
-  //rect(232, 147, 30, 30);
+  rect(25, 25, 350, 350, 80);
 
   fill(black);
-  triangle(215, 272, 215, 322, 244, 298);
-  rect( 254, 272, 15, 50, 6);
-  rect( 274, 272, 15, 50, 6);
+  triangle(nose1X, nose1Y, nose2X, nose2Y, nose3X, nose3Y);
+  rect( 235, 180, 15, 45, 7);
+  rect( 210, 180, 15, 45, 7);
 
-  triangle(152, 283, 152, 307, 137, 296);
+  triangle(152, 283, 152, 307, 137, 297);
   triangle(137, 283, 137, 307, 122, 296);
-  rect( 117, 283, 5, 25, 6);
+  rect( 115, 283, 5, 25, 6);
 
   triangle(345, 283, 345, 307, 363, 296);
   triangle(363, 283, 363, 307, 378, 296);
   rect( 378, 283, 5, 25, 6);
-  noStroke();
-  rect( 245, 150, 5, 25, 6);
-  rect( 235, 160, 25, 5, 6);
-  stroke(1);
-
-  rect( 235, 435, 25, 5, 6);
-  
-  fill(blue);
-  rect(203, 325, 100, 100);
-  
-  fill(white);
-  noStroke();
-  ellipse(230, 420, 50, 10);
-  ellipse(240, 420, 50, 10);
-  ellipse(250, 420, 50, 10);
-  ellipse(260, 420, 50, 10);
-  ellipse(270, 420, 50, 10);
-  ellipse(280, 420, 50, 10);
-  ellipse(290, 420, 20, 10);
-  stroke(1);
-  
-  fill(pink);
-  noStroke();
-  ellipse(250,357,30,30);
-  rect(247.5, 370, 5, 30);
-  stroke(1);
-  line(235, 374, 247, 382);
-  line(262, 374, 252, 382);
-  line(240, 408, 247, 399);
-  line(252, 399, 258 ,408); 
-  
-  fill(blue);
-  rect(113, 110, 275, 5, 10);
-  fill(lightblue);
-  
   
 
+ 
   println ("Mousex:", mouseX, "\tMouseY:", mouseY);
 
   if (play)
