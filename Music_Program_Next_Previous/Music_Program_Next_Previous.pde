@@ -17,9 +17,11 @@ int numberOfSongs = 4;
 AudioPlayer[] song = new AudioPlayer[numberOfSongs];
 int currentSong = numberOfSongs - numberOfSongs;
 
-
 boolean play;
-
+float  button1X, button1Y, button1width, button1height;
+float button2X, button2Y, button2width, button2height;
+float button3X, button3Y, button3width, button3height;
+float button4X, button4Y, button4width, button4height;
 void setup(){
 size(400,400);
  background(lightblue);
@@ -41,7 +43,29 @@ println("press p to play and pause");
   titleFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
  
  quitButtonSetup();
-
+  //Button to illstrate arithmetic
+  button1X = width * 1/12;
+  button1Y = height * 1/12;
+  button1width = width * 1/25;
+  button1height = height * 1/25;
+  
+  //Button to illstrate arithmetic
+  button2X = width * 3/6;
+  button2Y = height * 1/6;
+  button2width = width * 1/18;
+  button2height = height * 1/18;
+  //
+  //Button to illustrate arithmetic
+  button3X = width * 7/14;  
+  button3Y = height * 11/14; 
+  button3width = width * 2/15;
+  button3height = height * 1/9;
+  //
+  button4X = width * 10/15;
+  button4Y = height * 4.3/13;
+  button4width = width*2/25;
+  button4height = height*2/25;
+  
 }
 void draw(){
 
@@ -65,20 +89,54 @@ void draw(){
   rect( 350, 194, 5, 25, 6);
   
  fill(pink);
-  //rect(109, 275, 50, 40);
-  //rect(340, 276, 50, 40);
-  //rect(210, 265, 85, 65);
-  //rect(232, 422, 30, 30);
-  //rect(232, 147, 30, 30);
+   rect(button1X, button1Y, button1width, button1height);
+   rect(button2X, button2Y, button2width, button2height);
+   rect(button3X, button3Y, button3width, button3height);
+   rect(button4X, button4Y, button4width, button4height);
 
- 
- 
-
-
+   if ( mouseX>=button1X && mouseX<=button1X+button1width && mouseY>=button1Y && mouseY<=button1Y+button1height) {
+   }
+   if ( mouseX>=button2X && mouseX<=button2X+button2width && mouseY>=button2Y && mouseY<=button2Y+button2height) {
+   }
+  if ( mouseX>=button3X && mouseX<=button3X+button3width && mouseY>=button3Y && mouseY<=button3Y+button3height) {
+  }
+    if ( mouseX>=button4X && mouseX<=button4X+button4width && mouseY>=button4Y && mouseY<=button4Y+button4height) {
+  }
 }
 void mouseClicked(){
     quitButtonMouseClicked();
-
+ if ( mouseX>=button1X && mouseX<=button1X+button1width && mouseY>=button1Y && mouseY<=button1Y+button1height) { // Next-Back code
+ if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+   song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1; // Equivalent code: currentSong = currentSong - 1
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1;
+      }
+      println(currentSong);
+    }
+  } 
+  //
+  if ( mouseX>=button2X && mouseX<=button2X+button2width && mouseY>=button2Y && mouseY<=button2Y+button2height) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {
+      song[currentSong].rewind();
+      song[currentSong].play();
+    } else {
+      song[currentSong].play();
+    }
+  }
 }
 void keyPressed(){
  if (key == 'b' || key == 'B') { // Next-Back code
