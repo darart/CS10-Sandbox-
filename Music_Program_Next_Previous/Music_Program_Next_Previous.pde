@@ -44,32 +44,29 @@ println("press p to play and pause");
  
  quitButtonSetup();
   //Button to illstrate arithmetic
-  button1X = width * 1/12;
-  button1Y = height * 1/12;
-  button1width = width * 1/25;
-  button1height = height * 1/25;
+  button1X = width * 1/8;
+  button1Y = height * 0.95/2;
+  button1width = width * 9/80;
+  button1height = height * 7/80;
   
   //Button to illstrate arithmetic
-  button2X = width * 3/6;
-  button2Y = height * 1/6;
-  button2width = width * 1/18;
-  button2height = height * 1/18;
+  button2X = width * 2.4/6;
+  button2Y = height * 1.81/4;
+  button2width = width * 1.2/12;
+  button2height = height * 1.4/12;
   //
   //Button to illustrate arithmetic
-  button3X = width * 7/14;  
-  button3Y = height * 11/14; 
-  button3width = width * 2/15;
-  button3height = height * 1/9;
-  //
-  button4X = width * 10/15;
-  button4Y = height * 4.3/13;
-  button4width = width*2/25;
-  button4height = height*2/25;
+  button3X = width * 3.2/6;  
+  button3Y = height * 1.81/4; 
+  button3width = width * 1.2/12;
+  button3height = height * 1.4/12;
+
   
 }
 void draw(){
 
   quitButtonDraw();
+  
   
   fill(white);
   noStroke();
@@ -87,7 +84,7 @@ void draw(){
   triangle(310, 194, 310, 218, 330, 208);
   triangle(330, 194, 330, 218, 350, 208);
   rect( 350, 194, 5, 25, 6);
-  
+
  fill(pink);
    rect(button1X, button1Y, button1width, button1height);
    rect(button2X, button2Y, button2width, button2height);
@@ -100,8 +97,7 @@ void draw(){
    }
   if ( mouseX>=button3X && mouseX<=button3X+button3width && mouseY>=button3Y && mouseY<=button3Y+button3height) {
   }
-    if ( mouseX>=button4X && mouseX<=button4X+button4width && mouseY>=button4Y && mouseY<=button4Y+button4height) {
-  }
+  
 }
 void mouseClicked(){
     quitButtonMouseClicked();
@@ -169,6 +165,35 @@ void keyPressed(){
       song[currentSong].play();
     } else {
       song[currentSong].play();
+    }
+  }
+  //
+   if (key == 'n' || key == 'N') { //Next-Back Code
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - 1) {
+        currentSong = currentSong - (numberOfSongs-1);
+      } else {
+        currentSong = currentSong + 1;
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      if ( currentSong == numberOfSongs - 1) {
+        currentSong = currentSong - (numberOfSongs);
+      }
+      currentSong = currentSong + 1;
+      println(currentSong);
+    }
+   }
+     //
+  if (key == 's' || key == 'S') {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+    } else { //Song is not Playing
+      song[currentSong].rewind();
     }
   }
 }

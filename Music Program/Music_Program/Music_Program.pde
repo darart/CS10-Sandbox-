@@ -66,10 +66,7 @@ println("Publisher:",songMetaData1.publisher());
 println("Encoded:",songMetaData1.encoded()); //how a computer reads the file
    //
    size(512, 500, P3D);
- drawingSurfaceX = width*0/3;
-  drawingSurfaceY = height*0/3;
-  drawingSurfaceWidth = width*5/5;
-  drawingSurfaceHeight = height*5/5;
+
   // we pass this to Minim so that it can load files from the data directory
   minim = new Minim(this);
   
@@ -79,8 +76,7 @@ println("Encoded:",songMetaData1.encoded()); //how a computer reads the file
   song[currentSong] = minim.loadFile("Greedy.mp3");
 }
 void draw(){
-  rect(drawingSurfaceX, drawingSurfaceY, drawingSurfaceWidth, drawingSurfaceHeight);
-  ellipse(width*3/4, height*1/2, width, height);//-circle
+ 
  }
 
 void keyPressed(){
@@ -157,8 +153,6 @@ void keyPressed(){
   //
 }
 void mousePressed(){
-if ( mouseX>drawingSurfaceX  && mouseX<drawingSurfaceX+drawingSurfaceWidth  && mouseY>drawingSurfaceY && mouseY<drawingSurfaceY+drawingSurfaceHeight) {
-    println("drawing surface");
     
-}
+
 }
