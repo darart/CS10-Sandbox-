@@ -56,17 +56,25 @@ println("press p to play and pause");
   button2height = height * 1.4/12;
   //
   //Button to illustrate arithmetic
-  button3X = width * 3.2/6;  
+  button3X = width * 3.15/6;  
   button3Y = height * 1.81/4; 
   button3width = width * 1.2/12;
   button3height = height * 1.4/12;
-
+  //
+  button4X = width * 6.2/8;
+  button4Y = height * 0.95/2;
+  button4width = width*9/80;
+  button4height = height*7/80;
   
 }
 void draw(){
 
   quitButtonDraw();
-  
+   fill(pink);
+   rect(button1X, button1Y, button1width, button1height);
+   rect(button2X, button2Y, button2width, button2height);
+   rect(button3X, button3Y, button3width, button3height);
+   rect(button4X, button4Y, button4width, button4height);
   
   fill(white);
   noStroke();
@@ -85,11 +93,7 @@ void draw(){
   triangle(330, 194, 330, 218, 350, 208);
   rect( 350, 194, 5, 25, 6);
 
- fill(pink);
-   rect(button1X, button1Y, button1width, button1height);
-   rect(button2X, button2Y, button2width, button2height);
-   rect(button3X, button3Y, button3width, button3height);
-   rect(button4X, button4Y, button4width, button4height);
+
 
    if ( mouseX>=button1X && mouseX<=button1X+button1width && mouseY>=button1Y && mouseY<=button1Y+button1height) {
    }
@@ -97,7 +101,8 @@ void draw(){
    }
   if ( mouseX>=button3X && mouseX<=button3X+button3width && mouseY>=button3Y && mouseY<=button3Y+button3height) {
   }
-  
+  if ( mouseX>=button4X && mouseX<=button4X+button4width && mouseY>=button4Y && mouseY<=button4Y+button4height) {
+    }
 }
 void mouseClicked(){
     quitButtonMouseClicked();
@@ -133,6 +138,35 @@ void mouseClicked(){
       song[currentSong].play();
     }
   }
+       //
+  if ( mouseX>=button3X && mouseX<=button3X+button3width && mouseY>=button3Y && mouseY<=button3Y+button3height) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+    } else { //Song is not Playing
+      song[currentSong].rewind();
+    }
+  }
+  //
+   if ( mouseX>=button4X && mouseX<=button4X+button4width && mouseY>=button4Y && mouseY<=button4Y+button4height) { //Next-Back Code
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - 1) {
+        currentSong = currentSong - (numberOfSongs-1);
+      } else {
+        currentSong = currentSong + 1;
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      if ( currentSong == numberOfSongs - 1) {
+        currentSong = currentSong - (numberOfSongs);
+      }
+      currentSong = currentSong + 1;
+      println(currentSong);
+    }
+   }
 }
 void keyPressed(){
  if (key == 'b' || key == 'B') { // Next-Back code
